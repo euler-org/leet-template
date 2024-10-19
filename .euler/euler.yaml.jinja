@@ -1,0 +1,24 @@
+$meta:
+  version: "5.2"
+
+languages:
+  $common:
+    runner: .euler/runner/run.py
+    use_ids: false
+    named_arg_type: long
+
+  {% if 'python' in languages -%}
+  python:
+    extension: py
+    runner_args:
+      - --language
+      - python
+  {%- endif %}
+
+  {% if 'rust' in languages -%}
+  rust:
+    extension: rs
+    runner_args:
+      - --language
+      - rust
+  {%- endif %}

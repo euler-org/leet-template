@@ -1,0 +1,24 @@
+[package]
+name = "{{project_name}}"
+version = "1.0.0"
+edition = "2024"
+
+authors = [
+    "{{author_name}} <{{author_email}}>"
+]
+description = "{{description}}"
+license = "BSD-3-Clause"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = 3
+panic = "abort"
+strip = true
+overflow-checks = false
+debug = false
+rpath = false
+
+[lib]
+name = "lib"
+path = "src/lib/lib.rs"

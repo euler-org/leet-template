@@ -1,0 +1,82 @@
+$globals:
+  version: "8.1"
+
+(?P<language>.+)-build:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ build
+
+build:
+  phony: true
+  requires:
+    {% if 'python' in languages -%}
+    - python-build
+    {%- endif %}
+    {% if 'rust' in languages -%}
+    - rust-build
+    {%- endif %}
+
+(?P<language>.+)-install:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ install
+
+install:
+  phony: true
+  requires:
+    {% if 'python' in languages -%}
+    - python-install
+    {%- endif %}
+    {% if 'rust' in languages -%}
+    - rust-install
+    {%- endif %}
+
+(?P<language>.+)-format:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ format
+
+format:
+  phony: true
+  requires:
+    {% if 'python' in languages -%}
+    - python-format
+    {%- endif %}
+    {% if 'rust' in languages -%}
+    - rust-format
+    {%- endif %}
+
+(?P<language>.+)-lint:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ lint
+
+lint:
+  phony: true
+  requires:
+    {% if 'python' in languages -%}
+    - python-lint
+    {%- endif %}
+    {% if 'rust' in languages -%}
+    - rust-lint
+    {%- endif %}
+
+(?P<language>.+)-tests:
+  phony: true
+  regex: true
+  commands:
+    - yam -d ${language}/ tests
+
+tests:
+  phony: true
+  requires:
+    {% if 'python' in languages -%}
+    - python-tests
+    {%- endif %}
+    {% if 'rust' in languages -%}
+    - rust-tests
+    {%- endif %}

@@ -1,0 +1,28 @@
+{% if 'rust' in languages -%}
+# compiled output
+rust/target/
+{%- endif %}
+
+{% if 'python' in languages -%}
+# cache
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.cov_cache/
+{%- endif %}
+
+# installation/build artifacts
+.yamk/
+{% if 'python' in languages -%}
+python/dist/
+uv.lock
+{%- endif %}
+{% if 'rust' in languages -%}
+Cargo.lock
+{%- endif %}
+
+# local dev
+cookbook.yaml.d/
+local/
+local.*
