@@ -1,0 +1,19 @@
+[package]
+name = "{{project_name}}"
+version = "1.0.0"
+edition = "2021"
+
+authors = ["{{author_name}} <{{author_email}}>"]
+description = "{{description}}"
+license = "BSD-3-Clause"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true 
+
+[lib]
+name = "lib"
+path = "src/lib/lib.rs"
